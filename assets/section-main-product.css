@@ -830,6 +830,12 @@ a.product__text {
   background: white;
   justify-content: space-between;
   margin: 0;
+  z-index: 2;
+  transition: transform .4s ease-in-out;
+  transform: translateY(100%);
+}
+.sticky-atc.show-sticky-atc {
+  transform: translateY(0%);
 }
 
 .sticky-atc .sticky-atc__content {

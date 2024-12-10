@@ -1030,6 +1030,32 @@
                     </div>
                   </div>
                 </div>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                    const buyButtonsContainer = document.querySelector('.buy-buttons-container');
+                    const stickyAtc = document.querySelector('.sticky-atc');
+
+                    if (buyButtonsContainer && stickyAtc) {
+                      const observer = new IntersectionObserver(
+                        (entries) => {
+                          entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                              stickyAtc.classList.remove('show-sticky-atc');
+                            } else {
+                              stickyAtc.classList.add('show-sticky-atc');
+                            }
+                          });
+                        },
+                        {
+                          root: null,
+                          threshold: 0,
+                        }
+                      );
+
+                      observer.observe(buyButtonsContainer);
+                    }
+                  });
+                </script>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
