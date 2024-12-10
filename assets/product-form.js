@@ -127,8 +127,10 @@ if (!customElements.get('product-form')) {
 
       toggleSubmitButtonLoading(loading = true) {
         if (loading) {
+          this.submitButton.querySelector('span').classList.add('hidden');
           this.submitButton.querySelector('.loading__spinner').classList.remove('hidden');
         } else {
+          this.submitButton.querySelector('span').classList.remove('hidden');
           this.submitButton.querySelector('.loading__spinner').classList.add('hidden');
         }
       }

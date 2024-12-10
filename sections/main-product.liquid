@@ -992,6 +992,44 @@
                     });
                   </script>
                 </div>
+              {% when 'sticky_atc' %}
+                <div class="sticky-atc">
+                  <div class="sticky-atc__content page-width">
+                    <div class="sticky-atc__product-display">
+                      <img
+                        src="{{ product.featured_image | image_url: width: 150 }}"
+                        alt="{{ product.title }}"
+                        width="46"
+                        height="46"
+                        loading="lazy"
+                      >
+                      <div class="sticky-atc__product-info">
+                        <p class="sticky-atc__vendor">{{ product.vendor }}</p>
+                        <p class="sticky-atc__title">{{ product.title }}</p>
+                        <div class="jdgm-widget jdgm-preview-badge">
+                          {{ product.metafields.judgeme.badge }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sticky-atc__buy-buttons">
+                      {%- render 'price',
+                        product: product,
+                        use_variant: true,
+                        show_badges: false,
+                        price_class: 'price--large',
+                        show_discount_percentage: false,
+                        hide_tax_note: true
+                      -%}
+                      {%- render 'buy-buttons',
+                        block: block,
+                        product: product,
+                        product_form_id: product_form_id,
+                        section_id: section.id,
+                        show_pickup_availability: true
+                      -%}
+                    </div>
+                  </div>
+                </div>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -1278,6 +1316,10 @@
     {
       "type": "benefits",
       "name": "Benefits"
+    },
+    {
+      "type": "sticky_atc",
+      "name": "Sticky ATC"
     },
     {
       "type": "discount_code",

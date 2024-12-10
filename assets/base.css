@@ -3554,6 +3554,10 @@ details-disclosure > details {
   animation: rotator 1.4s linear infinite;
 }
 
+.spinner .path {
+  stroke: white;
+}
+
 @keyframes rotator {
   0% {
     transform: rotate(0deg);
