@@ -81,7 +81,7 @@ if (!customElements.get('product-info')) {
 
       resetProductFormState() {
         const productForm = this.productForm;
-        productForm?.toggleSubmitButton(true);
+        productForm?.toggleSubmitButtonLoading(true);
         productForm?.handleErrorMessage();
       }
 
@@ -200,6 +200,8 @@ if (!customElements.get('product-info')) {
           this.querySelector(`#Quantity-Rules-${this.dataset.section}`)?.classList.remove('hidden');
           this.querySelector(`#Volume-Note-${this.dataset.section}`)?.classList.remove('hidden');
 
+          this.productForm?.toggleSubmitButtonLoading(false);
+
           this.productForm?.toggleSubmitButton(
             html.getElementById(`ProductSubmitButton-${this.sectionId}`)?.hasAttribute('disabled') ?? true,
             window.variantStrings.soldOut
@@ -235,6 +237,7 @@ if (!customElements.get('product-info')) {
       }
 
       setUnavailable() {
+        this.productForm?.toggleSubmitButtonLoading(false);
         this.productForm?.toggleSubmitButton(true, window.variantStrings.unavailable);
 
         const selectors = [

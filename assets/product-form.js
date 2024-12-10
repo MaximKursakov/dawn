@@ -125,6 +125,14 @@ if (!customElements.get('product-form')) {
         }
       }
 
+      toggleSubmitButtonLoading(loading = true) {
+        if (loading) {
+          this.submitButton.querySelector('.loading__spinner').classList.remove('hidden');
+        } else {
+          this.submitButton.querySelector('.loading__spinner').classList.add('hidden');
+        }
+      }
+
       get variantIdInput() {
         return this.form.querySelector('[name=id]');
       }
