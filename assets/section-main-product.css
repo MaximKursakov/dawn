@@ -816,20 +816,6 @@ a.product__text {
   padding: 0;
 }
 
-.product__media-toggle::after {
-  content: '';
-  cursor: pointer;
-  display: block;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: calc(var(--border-width) * -1);
-  right: calc(var(--border-width) * -1);
-  bottom: calc(var(--border-width) * -1);
-  left: calc(var(--border-width) * -1);
-  z-index: 2;
-}
-
 .product__media-toggle:focus-visible {
   outline: 0;
   box-shadow: none;
