@@ -207,6 +207,13 @@ if (!customElements.get('product-info')) {
             window.variantStrings.soldOut
           );
 
+          const stickATCForm = document.querySelector(`.sticky-atc product-form`);
+
+          stickATCForm?.toggleSubmitButton(
+            html.getElementById(`ProductSubmitButton-${this.sectionId}`)?.hasAttribute('disabled') ?? true,
+            window.variantStrings.soldOut
+          );
+
           publish(PUB_SUB_EVENTS.variantChange, {
             data: {
               sectionId: this.sectionId,
@@ -239,6 +246,9 @@ if (!customElements.get('product-info')) {
       setUnavailable() {
         this.productForm?.toggleSubmitButtonLoading(false);
         this.productForm?.toggleSubmitButton(true, window.variantStrings.unavailable);
+
+        const stickATCForm = document.querySelector(`.sticky-atc product-form`);
+        stickATCForm?.toggleSubmitButton(true, window.variantStrings.unavailable);
 
         const selectors = [
           // 'price',
