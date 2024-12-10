@@ -131,8 +131,45 @@ function trapFocus(container, elementToFocus = container) {
     elementToFocus.setSelectionRange(0, elementToFocus.value.length);
   }
 }
+const stickyHeader = document.querySelector('.section-header.shopify-section-group-header-group');
 
-// Here run the querySelector to figure out if the browser supports :focus-visible or not and run code based on it.
+function setupDrawerCloseButtons() {
+  document.querySelectorAll('.accordion__content.open-drawer').forEach((drawerContent) => {
+    // Use event delegation for parent elements
+    drawerContent.parentElement.addEventListener('click', handleDrawerOpen);
+
+    const closeButton = drawerContent.querySelector('.icon-close');
+    if (closeButton) {
+      closeButton.addEventListener('click', () => closeDrawer(drawerContent));
+    }
+  });
+}
+
+function handleDrawerOpen(event) {
+  const target = event.currentTarget;
+  stickyHeader.style.zIndex = 3;
+  document.body.classList.add('overflow-hidden');
+  document.querySelector('sticky-header').hide();
+}
+
+function closeDrawer(drawerContent) {
+  if (!drawerContent) return;
+
+  drawerContent.classList.add('closing-drawer');
+
+  const handleTransitionEnd = () => {
+    drawerContent.classList.remove('closing-drawer');
+    drawerContent.parentElement.removeAttribute('open');
+    drawerContent.removeEventListener('transitionend', handleTransitionEnd);
+    stickyHeader.style.zIndex = 4;
+    document.body.classList.remove('overflow-hidden');
+  };
+
+  drawerContent.addEventListener('transitionend', handleTransitionEnd);
+}
+
+setupDrawerCloseButtons();
+
 try {
   document.querySelector(':focus-visible');
 } catch (e) {
@@ -683,7 +720,7 @@ class ModalOpener extends HTMLElement {
 
     if (!button) return;
     button.addEventListener('click', () => {
-      const modal = document.querySelector(this.getAttribute('data-modal'));
+      const modal = document.getElementById(this.getAttribute('data-modal'));
       if (modal) modal.show(button);
     });
   }
@@ -742,9 +779,9 @@ class SliderComponent extends HTMLElement {
   initPages() {
     this.sliderItemsToShow = Array.from(this.sliderItems).filter((element) => element.clientWidth > 0);
     if (this.sliderItemsToShow.length < 2) return;
-    this.sliderItemOffset = this.sliderItemsToShow[1].offsetLeft - this.sliderItemsToShow[0].offsetLeft;
+    this.sliderItemOffset = this.sliderItemsToShow[1].offsetTop - this.sliderItemsToShow[0].offsetTop;
     this.slidesPerPage = Math.floor(
-      (this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) / this.sliderItemOffset
+      (this.slider.clientWidth - this.sliderItemsToShow[0].offsetTop) / this.sliderItemOffset
     );
     this.totalPages = this.sliderItemsToShow.length - this.slidesPerPage + 1;
     this.update();
@@ -761,7 +798,7 @@ class SliderComponent extends HTMLElement {
     if (!this.slider || !this.nextButton) return;
 
     const previousPage = this.currentPage;
-    this.currentPage = Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
+    this.currentPage = Math.round(this.slider.scrollTop / this.sliderItemOffset) + 1;
 
     if (this.currentPageElement && this.pageTotalElement) {
       this.currentPageElement.textContent = this.currentPage;
@@ -781,7 +818,7 @@ class SliderComponent extends HTMLElement {
 
     if (this.enableSliderLooping) return;
 
-    if (this.isSlideVisible(this.sliderItemsToShow[0]) && this.slider.scrollLeft === 0) {
+    if (this.isSlideVisible(this.sliderItemsToShow[0]) && this.slider.scrollTop === 0) {
       this.prevButton.setAttribute('disabled', 'disabled');
     } else {
       this.prevButton.removeAttribute('disabled');
@@ -795,8 +832,8 @@ class SliderComponent extends HTMLElement {
   }
 
   isSlideVisible(element, offset = 0) {
-    const lastVisibleSlide = this.slider.clientWidth + this.slider.scrollLeft - offset;
-    return element.offsetLeft + element.clientWidth <= lastVisibleSlide && element.offsetLeft >= this.slider.scrollLeft;
+    const lastVisibleSlide = this.slider.clientWidth + this.slider.scrollTop - offset;
+    return element.offsetTop + element.clientWidth <= lastVisibleSlide && element.offsetTop >= this.slider.scrollTop;
   }
 
   onButtonClick(event) {
@@ -804,14 +841,14 @@ class SliderComponent extends HTMLElement {
     const step = event.currentTarget.dataset.step || 1;
     this.slideScrollPosition =
       event.currentTarget.name === 'next'
-        ? this.slider.scrollLeft + step * this.sliderItemOffset
-        : this.slider.scrollLeft - step * this.sliderItemOffset;
+        ? this.slider.scrollTop + step * this.sliderItemOffset
+        : this.slider.scrollTop - step * this.sliderItemOffset;
     this.setSlidePosition(this.slideScrollPosition);
   }
 
   setSlidePosition(position) {
     this.slider.scrollTo({
-      left: position,
+      top: position,
     });
   }
 }
@@ -891,7 +928,7 @@ class SlideshowComponent extends SliderComponent {
 
     if (isFirstSlide && event.currentTarget.name === 'previous') {
       this.slideScrollPosition =
-        this.slider.scrollLeft + this.sliderFirstItemNode.clientWidth * this.sliderItemsToShow.length;
+        this.slider.scrollTop + this.sliderFirstItemNode.clientWidth * this.sliderItemsToShow.length;
     } else if (isLastSlide && event.currentTarget.name === 'next') {
       this.slideScrollPosition = 0;
     }
@@ -979,7 +1016,7 @@ class SlideshowComponent extends SliderComponent {
 
   autoRotateSlides() {
     const slideScrollPosition =
-      this.currentPage === this.sliderItems.length ? 0 : this.slider.scrollLeft + this.sliderItemOffset;
+      this.currentPage === this.sliderItems.length ? 0 : this.slider.scrollTop + this.sliderItemOffset;
 
     this.setSlidePosition(slideScrollPosition);
     this.applyAnimationToAnnouncementBar();
@@ -1041,7 +1078,7 @@ class SlideshowComponent extends SliderComponent {
   linkToSlide(event) {
     event.preventDefault();
     const slideScrollPosition =
-      this.slider.scrollLeft +
+      this.slider.scrollTop +
       this.sliderFirstItemNode.clientWidth *
         (this.sliderControlLinksArray.indexOf(event.currentTarget) + 1 - this.currentPage);
     this.slider.scrollTo({

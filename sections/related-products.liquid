@@ -1,6 +1,10 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'section-related-products.css' | asset_url | stylesheet_tag }}
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{{ 'splide.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'splide.min.js' | asset_url }}"></script>
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
@@ -8,8 +12,8 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   @media screen and (min-width: 750px) {
@@ -19,40 +23,96 @@
     }
   }
 {%- endstyle -%}
-
-<div class="color-{{ section.settings.color_scheme }} gradient">
+<div class="color-{{ section.settings.color_scheme }} gradient {% if recommendations.products_count == 0 %}  {% endif %}">
   <product-recommendations
     class="related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
     data-section-id="{{ section.id }}"
     data-product-id="{{ product.id }}"
   >
-    {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
-        {{ section.settings.heading }}
-      </h2>
-      <ul
-        class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-        role="list"
-      >
-        {% assign skip_card_product_styles = false %}
-        {% for recommendation in recommendations.products %}
-          <li class="grid__item">
-            {% render 'card-product',
-              card_product: recommendation,
-              media_aspect_ratio: section.settings.image_ratio,
-              image_shape: section.settings.image_shape,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              skip_styles: skip_card_product_styles
-            %}
-          </li>
-          {%- assign skip_card_product_styles = true -%}
-        {% endfor %}
-      </ul>
-    {% endif %}
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+    <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
+      {{ section.settings.heading }}
+    </h2>
+    <section class="splide splide__recommended-products" id="recommended-products" aria-label="Product Slider">
+      <div class="splide__arrows">
+        <button class="splide__arrow splide__arrow--prev">
+          {{ 'icon-caret.svg' | inline_asset_content }}
+        </button>
+        <button class="splide__arrow splide__arrow--next">
+          {{ 'icon-caret.svg' | inline_asset_content }}
+        </button>
+      </div>
+      <div class="splide__track">
+        <ul class="splide__list limit-height">
+          
+            {% assign skip_card_product_styles = false %}
+            {% for recommendation in recommendations.products %}
+              <li class="splide__slide">
+                {% render 'card-product',
+                  card_product: recommendation,
+                  media_aspect_ratio: section.settings.image_ratio,
+                  image_shape: section.settings.image_shape,
+                  show_secondary_image: section.settings.show_secondary_image,
+                  show_vendor: section.settings.show_vendor,
+                  show_rating: section.settings.show_rating,
+                  skip_styles: skip_card_product_styles,
+                  horizontal_class: true,
+                  quick_add: 'standard',
+                  lazy_load: true,
+                  horizontal_quick_add: true,
+                  show_delivery_state: true
+                %}
+              </li>
+              {%- assign skip_card_product_styles = true -%}
+            {% endfor %}
+          
+        </ul>
+        <button 
+          class="button--full-width button primary--secondary recommended-products__load"
+          onclick="this.parentElement.querySelector('.splide__list').classList.remove('limit-height'); this.remove()">
+          MEHR 
+          <span class="svg-wrapper">
+            {{- 'icon-plus.svg' | inline_asset_content -}}
+          </span>
+        </button>
+      </div>
+    </section>
+  {% endif %}
   </product-recommendations>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.addedNodes.length) {
+          var recommendations = document.querySelector('#recommended-products');
+          if (recommendations) {
+            var splide = new Splide('.splide__recommended-products', {
+              perPage: {{ section.settings.columns_desktop }},
+              perMove: 1,
+              gap: '24px', 
+              pagination: false,
+              padding: { right: 48 },
+              breakpoints: {
+                750: {
+                  destroy: true,
+                }
+              }
+            }); 
+            splide.mount();
+            observer.disconnect(); // Stop observing once Splide is mounted
+          }
+        }
+      });
+    });
+
+    // Start observing the body for added nodes
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+</script>
+ 
   {% if section.settings.image_shape == 'arch' %}
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
@@ -243,7 +303,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 36
+      "default": 48
     },
     {
       "type": "range",
@@ -253,7 +313,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "default": 48
     }
   ]
 }

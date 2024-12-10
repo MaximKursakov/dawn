@@ -1262,6 +1262,12 @@
       },
       {
         "type": "color_scheme",
+        "id": "express_badge_color_scheme",
+        "label": "Express badge color scheme",
+        "default": "scheme-4"
+      },
+      {
+        "type": "color_scheme",
         "id": "sold_out_badge_color_scheme",
         "label": "t:settings_schema.badges.settings.sold_out_badge_color_scheme.label",
         "default": "scheme-3"
@@ -1410,6 +1416,12 @@
         "id": "currency_code_enabled",
         "label": "t:settings_schema.currency_format.settings.currency_code_enabled.label",
         "default": true
+      },
+      {
+        "type": "number",
+        "id": "vat_rate",
+        "label": "Vat Rate",
+        "default": 19,
       }
     ]
   },

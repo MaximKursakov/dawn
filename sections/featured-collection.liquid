@@ -110,10 +110,14 @@
               image_shape: section.settings.image_shape,
               show_secondary_image: section.settings.show_secondary_image,
               show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
+              show_rating: true,
               skip_styles: skip_card_product_styles,
               section_id: section.id,
-              quick_add: section.settings.quick_add
+              quick_add: section.settings.quick_add,
+              horizontal_class: true,
+              lazy_load: true,
+              horizontal_quick_add: true,
+              show_delivery_state: true
             %}
           </li>
           {%- assign skip_card_product_styles = true -%}
@@ -482,7 +486,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 36
+      "default": 48
     },
     {
       "type": "range",
@@ -492,7 +496,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "default": 48
     }
   ],
   "presets": [

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "password_page": {
@@ -106,7 +115,8 @@
   },
   "products": {
     "product": {
-      "add_to_cart": "Add to cart",
+      "add_to_cart": "IN DEN WARENKORB",
+      "add_to_cart_mobile": "WARENKORB",
       "choose_options": "Choose options",
       "choose_product_options": "Choose options for {{ product_name }}",
       "description": "Description",
@@ -117,7 +127,8 @@
       "inventory_out_of_stock": "Out of stock",
       "inventory_out_of_stock_continue_selling": "In stock",
       "sku": "SKU",
-      "on_sale": "Sale",
+      "on_sale": "Angebot",
+      "express": "Express",
       "product_variants": "Product variants",
       "media": {
         "gallery_viewer": "Gallery Viewer",
@@ -142,6 +153,15 @@
         "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}</span> in cart",
         "note": "View quantity rules"
       },
+      "datasheet": {
+        "title": "Produktdatenblatt"
+      },
+      "payment_types": {
+        "title": "Bezahlung und Sicherheit"
+      }, 
+      "shipping_return_policies": {
+        "title": "Versand und Rückgabe"
+      },
       "volume_pricing": {
         "title": "Volume Pricing",
         "note": "Volume pricing available",
@@ -165,8 +185,8 @@
         "unit_price": "Unit price"
       },
       "share": "Share this product",
-      "sold_out": "Sold out",
-      "unavailable": "Unavailable",
+      "sold_out": "Benachrichtigen",
+      "unavailable": "Benachrichtigen",
       "vendor": "Vendor",
       "value_unavailable": "{{ option_value }} - Unavailable",
       "variant_sold_out_or_unavailable": "Variant sold out or unavailable",
@@ -174,10 +194,11 @@
       "view_full_details": "View full details",
       "xr_button": "View in your space",
       "xr_button_label": "View in your space, loads item in augmented reality window",
-      "taxes_included": "Taxes included.",
+      "taxes_included": "inkl. MwSt., zzgl. Versand",
       "duties_included": "Duties included.",
       "duties_and_taxes_included": "Duties and taxes included.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout."
+      "duties_and_taxes_excluded": "{{ price }} inkl. MwSt.",
+      "shipping_policy_html": ", zzgl. <a href=\"{{ link }}\">Versandkosten</a>" 
     },
     "modal": {
       "label": "Media gallery"

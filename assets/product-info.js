@@ -165,12 +165,14 @@ if (!customElements.get('product-info')) {
         return (html) => {
           const variant = this.getSelectedVariant(html);
 
+          const isVariantAvailable = variant && variant.available;
+
           this.pickupAvailability?.update(variant);
           this.updateOptionValues(html);
           this.updateURL(productUrl, variant?.id);
           this.updateVariantInputs(variant?.id);
 
-          if (!variant) {
+          if (!isVariantAvailable) {
             this.setUnavailable();
             return;
           }
@@ -180,13 +182,15 @@ if (!customElements.get('product-info')) {
           const updateSourceFromDestination = (id, shouldHide = (source) => false) => {
             const source = html.getElementById(`${id}-${this.sectionId}`);
             const destination = this.querySelector(`#${id}-${this.dataset.section}`);
+            console.log('source sel', `${id}-${this.sectionId}`, 'destination', destination);
             if (source && destination) {
               destination.innerHTML = source.innerHTML;
               destination.classList.toggle('hidden', shouldHide(source));
             }
           };
 
-          updateSourceFromDestination('price');
+          // updateSourceFromDestination('price');
+          updateSourceFromDestination('Quantity-Form', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('Sku', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
           updateSourceFromDestination('Volume');
@@ -233,9 +237,19 @@ if (!customElements.get('product-info')) {
       setUnavailable() {
         this.productForm?.toggleSubmitButton(true, window.variantStrings.unavailable);
 
-        const selectors = ['price', 'Inventory', 'Sku', 'Price-Per-Item', 'Volume-Note', 'Volume', 'Quantity-Rules']
+        const selectors = [
+          // 'price',
+          'Inventory',
+          'Sku',
+          'Price-Per-Item',
+          'Volume-Note',
+          'Volume',
+          'Quantity-Rules',
+          'Quantity-Form',
+        ]
           .map((id) => `#${id}-${this.dataset.section}`)
           .join(', ');
+        console.log('ALL SELCETES', document.querySelectorAll(selectors));
         document.querySelectorAll(selectors).forEach(({ classList }) => classList.add('hidden'));
       }
 

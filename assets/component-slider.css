@@ -36,7 +36,7 @@ slider-component.slider-component-full-width {
   .slider.slider--mobile {
     position: relative;
     flex-wrap: inherit;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scroll-padding-left: 1.5rem;
@@ -70,11 +70,23 @@ slider-component.slider-component-full-width {
   .slider.slider--tablet-up {
     position: relative;
     flex-wrap: inherit;
-    overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scroll-padding-left: 1rem;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .splide__track--draggable {
+    min-height: 100%;
+  }
+
+  .splide__arrows .splide__arrow {
+    background-color: white;
+    opacity: 1;
+  }
+
+  .splide__arrows--ttb .splide__arrow--next {
+    
   }
 
   .slider.slider--tablet-up .slider__slide {
@@ -312,9 +324,7 @@ slider-component.slider-component-full-width {
 }
 
 .slider-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: none;
 }
 
 @media screen and (min-width: 990px) {
@@ -333,18 +343,25 @@ slider-component.slider-component-full-width {
   .slider--mobile + .slider-buttons {
     display: none;
   }
+  .slider-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+  }
 }
 
 .slider-button {
-  color: rgba(var(--color-foreground), 0.75);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  width: 44px;
-  height: 44px;
+  color: #0A1119;
   display: flex;
-  align-items: center;
+  width: 40px;
+  min-height: 40px;
   justify-content: center;
+  align-items: center;
+  background: none;
+  gap: 10px;
+  border-radius: 24px;
+  border: 2px solid #0A1119;
 }
 
 .slider-button:not([disabled]):hover {
@@ -352,7 +369,7 @@ slider-component.slider-component-full-width {
 }
 
 .slider-button .icon {
-  height: 0.6rem;
+  height: 16px
 }
 
 .slider-button[disabled] .icon {
@@ -366,12 +383,4 @@ slider-component.slider-component-full-width {
 
 .slider-button--prev .icon {
   transform: rotate(90deg);
-}
-
-.slider-button--next:not([disabled]):hover .icon {
-  transform: rotate(-90deg) scale(1.1);
-}
-
-.slider-button--prev:not([disabled]):hover .icon {
-  transform: rotate(90deg) scale(1.1);
 }

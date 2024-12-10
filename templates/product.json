@@ -1,216 +1,213 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
+        "badges_txALh6": {
+          "type": "badges",
+          "settings": {}
+        },
+        "judge_me_reviews_preview_badge_XfNpCB": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         },
         "title": {
-          "type": "title"
+          "type": "title",
+          "settings": {}
         },
-        "caption": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
-          }
+        "vendor_zw8NMi": {
+          "type": "vendor",
+          "settings": {}
         },
-        "price": {
-          "type": "price"
+        "benefits_zhTHK6": {
+          "type": "benefits",
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector"
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "discount_code_i7Hi67": {
+          "type": "discount_code",
+          "settings": {
+            "content": "25% sparen mit",
+            "code": "BLACK25%",
+            "background_color": "#fcf7f5"
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
         },
-        "description": {
-          "type": "description"
-        },
-        "collapsible-row-0": {
-          "type": "collapsible_tab",
+        "delivery_time_dropdown_fy8ibJ": {
+          "type": "delivery_time_dropdown",
           "settings": {
-            "heading": "Materials",
-            "icon": "leather",
-            "content": "",
+            "icon": "is_deliverable",
+            "enable_drawer": true,
+            "content": "<h2>Lieferzeit</h2><p>Bei den Lieferzeiten sind die Bearbeitung im Lager, Übergabe an Spediteur und die Lieferung bis Bordsteinkante inbegriffen. Die Lieferung ist ohne Zusatzkosten versichert. Sobald Ihre Bestellung unser Lager verlässt, erhalten Sie von uns eine Benachrichtigung via E-Mail. Die Zustellung erfolgt dann in der Regel innerhalb der nächsten 48 Stunden.</p>",
             "page": ""
           }
         },
         "collapsible-row-1": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Shipping & Returns",
+            "heading": "Versand ab 7,99 €",
             "icon": "truck",
-            "content": "",
-            "page": ""
+            "enable_drawer": true,
+            "content": "<h2>Versandkosten</h2><h3><strong>Deutschland</strong></h3><p>Bestellungen werden innerhalb Deutschlands ab einem Mbw. von 300€ netto kostenlos geliefert. Bis dahin gelten Versandkosten i.H.v. 7,90€ (zzgl. Mwst.)</p><h3>Europa</h3><p>Wir wickeln Lieferungen innerhalb der europäischen Länder ab.</p><h3><strong>Weiteres Ausland</strong></h3><p>Es können keine pauschale Angaben zu Versandkosten in das weitere Ausland getroffen werden. Aus diesem Grund ist eine direkte Bestellung über unseren Onlineshop nicht möglich. Bitte setzen Sie sich mit unserem Kundenservice in Verbindung, wir unterbreiten Ihnen gerne und kostenlos ein individuelles Angebot</p><h3>Weitere Informationen</h3><p>Je nach Artikel beträgt die Lieferzeit i.d.R. 1 bis 14 Werktage. Genaue Informationen entnehmen Sie den Lieferzeiten am jeweiligen Produkt. Unsere Lieferung erfolgt stets frei Bordsteinkante. Der weitere Transport liegt in der Verantwortung des Kunden. Je nach Größe und Gewicht versenden wir unsere Produkte mit einer Spedition oder einem Paketdienst.</p><p>Bitte beachten Sie die folgenden Sonderregelungen:</p><ul><li>Eine direkte Lieferung auf eine Insel erfolgt nicht. Wir liefern kostenlos bis zur letzten Festlandstation.</li><li>Eine direkte Lieferung auf eine Bergstation erfolgt ebenfalls nicht. Hier wird die Ware bis zur Talstation geliefert.</li></ul>",
+            "page": "data-sale-opt-out"
           }
         },
-        "collapsible-row-2": {
+        "collapsible-row-0": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Dimensions",
-            "icon": "ruler",
-            "content": "",
+            "heading": "14 Tage Rückgabeservice",
+            "icon": "leather",
+            "enable_drawer": true,
+            "content": "<h2>Rückgabeservice</h2><h3>Ich möchte den Rückgabeservice nutzen. Wie geht das?</h3><p>Wir bieten Ihnen die Möglichkeit, die erworbenen Produkte innerhalb von 14 Tagen nach Erhalt der Ware zurückzusenden, sofern die nachfolgenden Kriterien eingehalten werden:</p><ul><li>Der Rückgabeantrag muss spätestens 14 Tage nach Erhalt der Ware eingereicht werden.</li><li>Die Ware muss unbenutzt und unbeschädigt sein. Setzt sich die Ware aus verschiedenen Einzelteilen zusammen, muss sie vollständig sein.</li><li>Die Ware muss in der originalen Versandverpackung transportsicher verpackt sein bzw. wie original verpackt sein (Schutzfolien, Schutzmaterialien, Zurrbänder, etc.).</li><li>Der Rückgabeservice kann je Auftrag maximal auf einen Betrag von 2500 EUR angewendet werden.</li><li>Sonderbauten, individuell auf Kundenwunsch beschaffte Artikel sowie Ersatz- und Verschleißteile sind von dem Rückgabeservice ausgenommen. Produkte des Online-Katalogs sind entsprechend in der Produktbeschreibung gekennzeichnet</li></ul><p></p>",
             "page": ""
           }
         },
-        "collapsible-row-3": {
-          "type": "collapsible_tab",
+        "payment_types_GtzJFw": {
+          "type": "payment_types",
           "settings": {
-            "heading": "Care Instructions",
-            "icon": "heart",
-            "content": "",
-            "page": ""
+            "payment_types": "paypal,klarna,visa,mastercard,billie,ratepay"
           }
         },
-        "share": {
-          "type": "share",
+        "contact_us_3LJzTe": {
+          "type": "contact_us",
           "settings": {
-            "share_label": "Share"
+            "image": "shopify://shop_images/Rectangle_144.jpg",
+            "content": "<strong>0231 1772630 </strong>Verkauf Mo-Fr (8-18 Uhr)",
+            "background_color": "#fcf7f5"
           }
         }
       },
       "block_order": [
-        "vendor",
+        "badges_txALh6",
+        "judge_me_reviews_preview_badge_XfNpCB",
         "title",
-        "caption",
-        "price",
+        "vendor_zw8NMi",
+        "benefits_zhTHK6",
         "variant_picker",
-        "quantity_selector",
+        "price",
+        "discount_code_i7Hi67",
         "buy_buttons",
-        "description",
-        "collapsible-row-0",
+        "delivery_time_dropdown_fy8ibJ",
         "collapsible-row-1",
-        "collapsible-row-2",
-        "collapsible-row-3",
-        "share"
+        "collapsible-row-0",
+        "payment_types_GtzJFw",
+        "contact_us_3LJzTe"
       ],
       "settings": {
         "enable_sticky_info": true,
-        "gallery_layout": "stacked",
-        "media_size": "large",
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
         "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "align_slider": true,
+        "media_position": "left",
+        "image_zoom": "hover",
         "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 12
-      }
-    },
-    "image-with-text": {
-      "type": "image-with-text",
-      "blocks": {
-        "image-with-text-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "image-with-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "image-with-text-0",
-        "image-with-text-1"
-      ],
-      "settings": {
-        "height": "small",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "scheme-2",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column-0": {
-          "type": "column",
-          "settings": {
-            "title": "Free Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column-1": {
-          "type": "column",
-          "settings": {
-            "title": "Hassle-Free Exchanges",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column-0",
-        "column-1"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 0,
+        "padding_bottom": 48
       }
     },
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "You may also like",
+        "heading": "Passendes Zubehör",
         "heading_size": "h2",
+        "products_to_show": 8,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "image_ratio": "square",
+        "image_shape": "default",
         "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 28
+        "show_vendor": true,
+        "show_rating": true,
+        "columns_mobile": "1",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "collapsible_content_yTay8k": {
+      "type": "collapsible-content",
+      "blocks": {
+        "item_description_wDr9mP": {
+          "type": "item_description",
+          "settings": {
+            "heading": "Artikelbeschreibung",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_7gVq3U": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Produktspezifikationen",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_iVY9qJ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Handbücher und Anleitungen",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_description_wDr9mP",
+        "collapsible_row_7gVq3U",
+        "collapsible_row_iVY9qJ"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     }
   },
   "order": [
     "main",
-    "image-with-text",
-    "multicolumn",
-    "related-products"
+    "related-products",
+    "collapsible_content_yTay8k"
   ]
 }
